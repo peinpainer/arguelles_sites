@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Creative Mini Website</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #800080, #b19cd9);
+    color: #ffffff;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 240px;
+    background: linear-gradient(135deg, #800080, #b19cd9);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 30px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.logo img {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 12px;
+    border-radius: 50%; /* make logo circular */
+    object-fit: cover;
+}
+
+.nav {
+    list-style: none;
+    padding: 0;
+}
+
+.nav li {
+    margin: 18px 0;
+}
+
+.nav a {
+    color: #f3e8df;
+    text-decoration: none;
+    padding: 12px 25px;
+    display: block;
+    border-left: 3px solid transparent;
+    transition: 0.3s;
+    font-weight: 300;
+}
+
+.nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-left: 3px solid #d4a574;
+}
+
+/* MAIN CONTENT */
+.content {
+    margin-left: 240px;
+    padding: 40px;
+    transition: 0.3s;
+}
+
+section {
+    display: none;
+    margin-bottom: 60px;
+    padding: 25px;
+    background: #ffe6f2;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    color: #b44d73;
+}
+
+section.active {
+    display: block;
+}
+
+h2 {
+    font-size: 28px;
+    border-bottom: 2px solid #ffb6d9;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #a63c66;
+}
+
+pre {
+    overflow-x: auto;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    color: #222;
+}
+
+/* MOBILE MENU BUTTON */
+.menu-btn {
+    display: none;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: #d36b91;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+    .sidebar {
+        left: -260px;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 20px;
+    }
+}
+
+/* HOMEPAGE IMAGE FULL SIZE */
+.home-image {
+    display: block;
+    margin: 20px auto;
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body>
+
+<div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
+
+<div class="sidebar" id="sidebar">
+    <div class="logo">
+        <img src="leslie.jpg" alt="Logo">
+        <div>Leslie Joyce F. Arguelles</div>
+    </div>
+    <ul class="nav">
+        <li><a href="#" onclick="showSection('home')">Home</a></li>
+        <li><a href="#" onclick="showSection('cpp')">C++ Activities</a></li>
+        <li><a href="#" onclick="showSection('c')">C Activities</a></li>
+        <li><a href="#" onclick="showSection('python')">Python</a></li>
+        <li><a href="#" onclick="showSection('java')">Java</a></li>
+        <li><a href="#" onclick="showSection('reflection')">Reflection</a></li>
+    </ul>
+</div>
+
+<div class="content">
+
+<section id="home" class="active">
+    <h2>Home</h2>
+    <p>Welcome to my Homepage!</p>
+    <img src="piksur.jpg" alt="Homepage Image" class="home-image">
+</section>
+
+<section id="cpp">
+    <h2>C++ Activities</h2>
+
+    <h3>Activity 1: Count Positive and Negative Numbers</h3>
+    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int num;
+    int positive = 0, negative = 0;
+    do {
+        cout &lt;&lt; "Enter a number: ";
+        cin &gt;&gt; num;
+
+        if (num &gt; 0) positive++;
+        else if (num &lt; 0) negative++;
+
+    } while (num != 0);
+
+    cout &lt;&lt; "You entered " &lt;&lt; positive &lt;&lt; " positive numbers and "
+         &lt;&lt; negative &lt;&lt; " negative numbers." &lt;&lt; endl;
+    return 0;
+}</code></pre>
+
+    <h3>Activity 2: Factorial of a Number</h3>
+    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int num;
+    int factorial = 1;
+    int i = 1;
+
+    cout &lt;&lt; "Enter a number: ";
+    cin &gt;&gt; num;
+
+    while (i &lt;= num) {
+        factorial *= i;
+        i++;
+    }
+
+    cout &lt;&lt; "Factorial = " &lt;&lt; factorial &lt;&lt; endl;
+    return 0;
+}</code></pre>
+
+    <h3>Activity 3: Fibonacci and Sum</h3>
+    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    char choice;
+    do {
+        int n;
+        cout &lt;&lt; "Enter number of terms: ";
+        cin &gt;&gt; n;
+
+        int a = 0, b = 1, next, sum = 0;
+
+        cout &lt;&lt; "Fibonacci: ";
+        for (int i = 1; i &lt;= n; i++) {
+            cout &lt;&lt; a &lt;&lt; " ";
+            sum += a;
+            next = a + b;
+            a = b;
+            b = next;
+        }
+
+        cout &lt;&lt; " Sum = " &lt;&lt; sum &lt;&lt; endl;
+
+        cout &lt;&lt; "Do you want to run again? (y/n): ";
+        cin &gt;&gt; choice;
+
+    } while (choice == 'y' || choice == 'Y');
+
+    return 0;
+}</code></pre>
+</section>
+
+<section id="c">
+    <h2>C Activities</h2>
+
+    <h3>Activity 1: Constant Variable</h3>
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    const int x = 5;
+    printf("x = %d\n", x);
+    return 0;
+}</code></pre>
+
+    <h3>Activity 2: Static Counter Function</h3>
+    <pre><code>#include &lt;stdio.h&gt;
+
+void counter() {
+    static int count = 0;
+    count++;
+    printf("Function called %d times\n", count);
+}
+
+int main() {
+    counter();
+    counter();
+    counter();
+    return 0;
+}</code></pre>
+
+    <h3>Activity 3: Sum of Two Numbers</h3>
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int num1, num2, sum;
+
+    printf("Enter first number: ");
+    scanf("%d", &amp;num1);
+
+    printf("Enter second number: ");
+    scanf("%d", &amp;num2);
+
+    sum = num1 + num2;
+
+    printf("The sum of %d and %d is %d\n", num1, num2, sum);
+
+    return 0;
+}</code></pre>
+</section>
+
+<section id="python">
+    <h2>Python Activities</h2>
+
+    <h3>Activity 1: Greeting User</h3>
+    <pre><code>name = input("Enter your name: ")
+print(f"Hello, {name}! Welcome!")</code></pre>
+
+    <h3>Activity 2: Sum of Two Numbers</h3>
+    <pre><code>num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+sum = num1 + num2
+print("The sum is:", sum)</code></pre>
+
+    <h3>Activity 3: Even or Odd</h3>
+    <pre><code>number = int(input("Enter a number: "))
+if number % 2 == 0:
+    print(f"{number} is even.")
+else:
+    print(f"{number} is odd.")</code></pre>
+</section>
+
+<section id="java">
+    <h2>Java Activities</h2>
+
+    <h3>Activity 1: Greeting User</h3>
+    <pre><code>import java.util.Scanner;
+public class Greeting {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+        System.out.println("Hello, " + name + "! Welcome!");
+        scanner.close();
+    }
+}</code></pre>
+
+    <h3>Activity 2: Sum of Two Numbers</h3>
+    <pre><code>import java.util.Scanner;
+public class SumNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter first number: ");
+        int num1 = scanner.nextInt();
+        System.out.print("Enter second number: ");
+        int num2 = scanner.nextInt();
+        int sum = num1 + num2;
+        System.out.println("The sum is: " + sum);
+        scanner.close();
+    }
+}</code></pre>
+
+    <h3>Activity 3: Even or Odd</h3>
+    <pre><code>import java.util.Scanner;
+public class EvenOdd {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+        if (number % 2 == 0) {
+            System.out.println(number + " is even.");
+        } else {
+            System.out.println(number + " is odd.");
+        }
+        scanner.close();
+    }
+}</code></pre>
+</section>
+
+<section id="reflection">
+    <h2>Reflection</h2>
+    <p>Working on this Portfolio Directory helped me look back on all the skills I developed throughout the course. Creating the slides using HTML and CSS allowed me to understand layout, spacing, and design more clearly. I also learned how important it is to make a page responsive so that it remains readable across different devices. Through this, I became more confident in organizing content and presenting information in a simple but neat way.
+
+As I compiled my C, C++, Java, and Python activities, I realized how much I had grown in programming. Each activity reminded me of the challenges I faced debugging errors, understanding new topics, and practicing different concepts. Even though some tasks were difficult, they helped me build patience and problem-solving skills. Seeing everything put together in this project made me appreciate my own progress.
+
+This project served as a reflection of my learning journey. It showed me that improvement takes time and effort, and every small step contributes to a bigger achievement. Creating this portfolio didn’t just help me finish a requirement it reminded me that I am capable of learning, adapting, and becoming better in both programming and creativity.</p>
+</section>
+
+</div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+function showSection(id) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => section.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
